@@ -1,319 +1,318 @@
-
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Annie He - 商品企划分析师</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f2f5;
-            color: #333;
-        }
-        .container {
-            max-width: 960px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .header {
-            text-align: center;
-            padding: 40px 0;
-            background-color: #001f3f;
-            color: #fff;
-            position: relative;
-        }
-        .header h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
-        .header p {
-            margin: 5px 0 0;
-            font-size: 1.2em;
-            color: #ddd;
-        }
-        .section {
-            background-color: #fff;
-            margin-bottom: 20px;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .section h2 {
-            margin-top: 0;
-            color: #001f3f;
-            border-bottom: 2px solid #001f3f;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-        .intro p {
-            line-height: 1.6;
-            font-size: 1.1em;
-        }
-        .kpi-cards {
-            display: flex;
-            justify-content: space-around;
-            text-align: center;
-            margin-top: 20px;
-        }
-        .kpi-card {
-            background-color: #f0f2f5;
-            padding: 20px;
-            border-radius: 8px;
-            width: 30%;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-        .kpi-card .number {
-            font-size: 2.5em;
-            font-weight: bold;
-            color: #001f3f;
-        }
-        .kpi-card .label {
-            font-size: 1em;
-            color: #555;
-            margin-top: 5px;
-        }
-        .report-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-        .report-card {
-            background-color: #f9f9f9;
-            border: 1px solid #eee;
-            border-radius: 8px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .report-card h3 {
-            margin-top: 0;
-            color: #001f3f;
-        }
-        .report-card .description {
-            flex-grow: 1;
-            margin-bottom: 15px;
-        }
-        .report-card .download-btn {
-            display: inline-block;
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 15px;
-            text-decoration: none;
-            border-radius: 5px;
-            text-align: center;
-            transition: background-color 0.3s;
-        }
-        .report-card .download-btn:hover {
-            background-color: #0056b3;
-        }
-        .skills {
-            text-align: center;
-        }
-        .skill-tag {
-            display: inline-block;
-            background-color: #001f3f;
-            color: #fff;
-            padding: 8px 15px;
-            margin: 5px;
-            border-radius: 20px;
-            font-size: 0.9em;
-        }
-        .footer {
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            color: #777;
-        }
-        
-        /* 编辑模式样式 */
-        [contenteditable="true"] {
-            outline: 2px dashed #007bff;
-            background-color: rgba(0, 123, 255, 0.05);
-            padding: 2px;
-            border-radius: 4px;
-        }
-        
-        #admin-controls {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
-        
-        .admin-btn {
-            background-color: #001f3f;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            font-weight: bold;
-        }
-        
-        .save-btn {
-            background-color: #28a745;
-            display: none;
-            margin-left: 10px;
-        }
-
-        .privacy-note {
-            margin-top: 30px;
-            padding: 20px;
-            background-color: #f9f9f9;
-            border: 1px solid #eee;
-            border-radius: 8px;
-        }
-
-        @media (max-width: 768px) {
-            .kpi-cards {
-                flex-direction: column;
-                align-items: center;
-            }
-            .kpi-card {
-                width: 80%;
-                margin-bottom: 15px;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="header">
-        <h1 class="editable" data-key="name">Annie He</h1>
-        <p class="editable" data-key="title">商品企划分析师</p>
-    </div>
-
-    <div class="container">
-        <div class="section intro">
-            <h2 class="editable" data-key="intro-title">关于我</h2>
-            <p class="editable" data-key="intro-content">拥有5年服装数据分析经验，具备数据分析与建模，计划与商品生命周期管理，市场运营策略制定能力。</p>
-            <div class="kpi-cards">
-                <div class="kpi-card">
-                    <div class="number editable" data-key="kpi-1-num">62</div>
-                    <div class="label editable" data-key="kpi-1-label">监控店铺数</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="number editable" data-key="kpi-2-num">1,000+</div>
-                    <div class="label editable" data-key="kpi-2-label">分析SKU数</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="number editable" data-key="kpi-3-num">100+</div>
-                    <div class="label editable" data-key="kpi-3-label">输出报告数</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2 class="editable" data-key="reports-title">分析报告卡片</h2>
-            <div class="report-cards">
-                <div class="report-card">
-                    <h3 class="editable" data-key="report-1-title">2022冬季裤子品类企划分析</h3>
-                    <p class="description editable" data-key="report-1-desc">本报告深入分析了2022年冬季裤子品类的市场趋势、销售数据和消费者偏好，为商品开发，投产提供了数据支持。</p>
-                    <a href="reports/2022_winter_pants_analysis.pdf" class="download-btn" data-key="report-1-pdf" download>下载PDF</a>
-                </div>
-                <div class="report-card">
-                    <h3 class="editable" data-key="report-2-title">19-21年裤子品类历史资料库</h3>
-                    <p class="description editable" data-key="report-2-desc">作为品类数据库，提供季度常青款方向。</p>
-                    <a href="reports/19-21_pants_database.pdf" class="download-btn" data-key="report-2-pdf" download>下载PDF</a>
-                </div>
-                <div class="report-card">
-                    <h3 class="editable" data-key="report-3-title">自动分货系统部分逻辑</h3>
-                    <p class="description editable" data-key="report-3-desc">本报告是与信息部合作开发自动分货系统的部分逻辑展示，系统目前还在使用，目的是为提供运营效率，可自动将仓库货品按需求派发门店。</p>
-                    <a href="reports/automatic distribution system.pdf" class="download-btn" data-key="report-3-pdf" download>下载PDF</a>
-                </div>
-            </div>
-            <div class="privacy-note editable" data-key="privacy-note-content">
-                为保证前司的隐私和信息安全性，故用已过时效性的文件展示，所有文件均为机密，仅供授权人员查看。所有报告内容均为机密，请勿外传。
-            </div>
-        </div>
-
-        <div class="section skills">
-            <h2 class="editable" data-key="skills-title">技能栈</h2>
-            <span class="skill-tag editable" data-key="skill-1">Excel (高级)</span>
-            <span class="skill-tag editable" data-key="skill-2">Python + trae (在学)</span>
-            <span class="skill-tag editable" data-key="skill-3">数据可视化</span>
-            <span class="skill-tag editable" data-key="skill-4">商品生命周期管理</span>
-        </div>
-    </div>
-
-    <div id="admin-controls">
-        <button id="login-btn" class="admin-btn" onclick="handleAdminLogin()">管理员登录</button>
-        <button id="save-btn" class="admin-btn save-btn" onclick="saveChanges()">保存修改</button>
-    </div>
-
-    <div class="footer">
-        <p class="editable" data-key="footer-text">&copy; 2026 Annie He. All Rights Reserved.</p>
-    </div>
-
-    <script>
-        let isEditMode = false;
-        const correctPassword = "annie"; // 管理员密码
-
-        // 页面加载时恢复数据（仅限文字）
-        window.onload = function() {
-            const savedData = localStorage.getItem('portfolioData');
-            if (savedData) {
-                const data = JSON.parse(savedData);
-                Object.keys(data).forEach(key => {
-                    const el = document.querySelector(`[data-key="${key}"]`);
-                    if (el && el.tagName !== 'A') {
-                        el.innerText = data[key];
-                    }
-                });
-            }
-        };
-
-        function handleAdminLogin() {
-            if (!isEditMode) {
-                const password = prompt("请输入管理密码：");
-                if (password === correctPassword) {
-                    enableEditMode();
-                } else {
-                    alert("密码错误，无法修改内容。");
-                }
-            } else {
-                disableEditMode();
-            }
-        }
-
-        function enableEditMode() {
-            isEditMode = true;
-            document.querySelectorAll('.editable').forEach(el => {
-                el.contentEditable = "true";
-            });
-            document.getElementById('login-btn').innerText = "退出编辑";
-            document.getElementById('save-btn').style.display = "inline-block";
-            alert("编辑模式已开启！您可以直接点击文字进行修改。\n注意：此处修改仅保存在本地浏览器，如需永久生效请修改源代码。");
-        }
-
-        function disableEditMode() {
-            isEditMode = false;
-            document.querySelectorAll('.editable').forEach(el => {
-                el.contentEditable = "false";
-            });
-            document.getElementById('login-btn').innerText = "管理员登录";
-            document.getElementById('save-btn').style.display = "none";
-        }
-
-        function saveChanges() {
-            const data = {};
-            document.querySelectorAll('.editable').forEach(el => {
-                const key = el.getAttribute('data-key');
-                if (key) {
-                    data[key] = el.innerText;
-                }
-            });
-            
-            localStorage.setItem('portfolioData', JSON.stringify(data));
-            alert("本地预览已保存！\n提示：为了让所有人都能看到，请联系开发人员将修改后的 HTML 部署到服务器。");
-            disableEditMode();
-        }
-    </script>
-
-</body>
-</html>
+<!DOCTYPE html> 
+ <html lang="zh-CN"> 
+ <head> 
+     <meta charset="UTF-8"> 
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+     <title>Annie He - 商品企划分析师</title> 
+     <style> 
+         body { 
+             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
+             margin: 0; 
+             padding: 0; 
+             background-color: #f0f2f5; 
+             color: #333; 
+         } 
+         .container { 
+             max-width: 960px; 
+             margin: 0 auto; 
+             padding: 20px; 
+         } 
+         .header { 
+             text-align: center; 
+             padding: 40px 0; 
+             background-color: #001f3f; 
+             color: #fff; 
+             position: relative; 
+         } 
+         .header h1 { 
+             margin: 0; 
+             font-size: 2.5em; 
+         } 
+         .header p { 
+             margin: 5px 0 0; 
+             font-size: 1.2em; 
+             color: #ddd; 
+         } 
+         .section { 
+             background-color: #fff; 
+             margin-bottom: 20px; 
+             padding: 30px; 
+             border-radius: 8px; 
+             box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+         } 
+         .section h2 { 
+             margin-top: 0; 
+             color: #001f3f; 
+             border-bottom: 2px solid #001f3f; 
+             padding-bottom: 10px; 
+             margin-bottom: 20px; 
+         } 
+         .intro p { 
+             line-height: 1.6; 
+             font-size: 1.1em; 
+         } 
+         .kpi-cards { 
+             display: flex; 
+             justify-content: space-around; 
+             text-align: center; 
+             margin-top: 20px; 
+         } 
+         .kpi-card { 
+             background-color: #f0f2f5; 
+             padding: 20px; 
+             border-radius: 8px; 
+             width: 30%; 
+             box-shadow: 0 1px 3px rgba(0,0,0,0.05); 
+         } 
+         .kpi-card .number { 
+             font-size: 2.5em; 
+             font-weight: bold; 
+             color: #001f3f; 
+         } 
+         .kpi-card .label { 
+             font-size: 1em; 
+             color: #555; 
+             margin-top: 5px; 
+         } 
+         .report-cards { 
+             display: grid; 
+             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+             gap: 20px; 
+         } 
+         .report-card { 
+             background-color: #f9f9f9; 
+             border: 1px solid #eee; 
+             border-radius: 8px; 
+             padding: 20px; 
+             display: flex; 
+             flex-direction: column; 
+             justify-content: space-between; 
+         } 
+         .report-card h3 { 
+             margin-top: 0; 
+             color: #001f3f; 
+         } 
+         .report-card .description { 
+             flex-grow: 1; 
+             margin-bottom: 15px; 
+         } 
+         .report-card .download-btn { 
+             display: inline-block; 
+             background-color: #007bff; 
+             color: #fff; 
+             padding: 10px 15px; 
+             text-decoration: none; 
+             border-radius: 5px; 
+             text-align: center; 
+             transition: background-color 0.3s; 
+         } 
+         .report-card .download-btn:hover { 
+             background-color: #0056b3; 
+         } 
+         .skills { 
+             text-align: center; 
+         } 
+         .skill-tag { 
+             display: inline-block; 
+             background-color: #001f3f; 
+             color: #fff; 
+             padding: 8px 15px; 
+             margin: 5px; 
+             border-radius: 20px; 
+             font-size: 0.9em; 
+         } 
+         .footer { 
+             text-align: center; 
+             padding: 20px; 
+             margin-top: 40px; 
+             color: #777; 
+         } 
+         
+         /* 编辑模式样式 */ 
+         [contenteditable="true"] { 
+             outline: 2px dashed #007bff; 
+             background-color: rgba(0, 123, 255, 0.05); 
+             padding: 2px; 
+             border-radius: 4px; 
+         } 
+         
+         #admin-controls { 
+             position: fixed; 
+             bottom: 20px; 
+             right: 20px; 
+             z-index: 1000; 
+         } 
+         
+         .admin-btn { 
+             background-color: #001f3f; 
+             color: white; 
+             border: none; 
+             padding: 10px 20px; 
+             border-radius: 5px; 
+             cursor: pointer; 
+             box-shadow: 0 2px 10px rgba(0,0,0,0.2); 
+             font-weight: bold; 
+         } 
+         
+         .save-btn { 
+             background-color: #28a745; 
+             display: none; 
+             margin-left: 10px; 
+         } 
+ 
+         .privacy-note { 
+             margin-top: 30px; 
+             padding: 20px; 
+             background-color: #f9f9f9; 
+             border: 1px solid #eee; 
+             border-radius: 8px; 
+         } 
+ 
+         @media (max-width: 768px) { 
+             .kpi-cards { 
+                 flex-direction: column; 
+                 align-items: center; 
+             } 
+             .kpi-card { 
+                 width: 80%; 
+                 margin-bottom: 15px; 
+             } 
+         } 
+     </style> 
+ </head> 
+ <body> 
+ 
+     <div class="header"> 
+         <h1 class="editable" data-key="name">Annie He</h1> 
+         <p class="editable" data-key="title">商品企划分析师</p> 
+     </div> 
+ 
+     <div class="container"> 
+         <div class="section intro"> 
+             <h2 class="editable" data-key="intro-title">关于我</h2> 
+             <p class="editable" data-key="intro-content">拥有5年服装数据分析经验，具备数据分析与建模，计划与商品生命周期管理，市场运营策略制定能力。</p> 
+             <div class="kpi-cards"> 
+                 <div class="kpi-card"> 
+                     <div class="number editable" data-key="kpi-1-num">62</div> 
+                     <div class="label editable" data-key="kpi-1-label">监控店铺数</div> 
+                 </div> 
+                 <div class="kpi-card"> 
+                     <div class="number editable" data-key="kpi-2-num">1,000+</div> 
+                     <div class="label editable" data-key="kpi-2-label">分析SKU数</div> 
+                 </div> 
+                 <div class="kpi-card"> 
+                     <div class="number editable" data-key="kpi-3-num">100+</div> 
+                     <div class="label editable" data-key="kpi-3-label">输出报告数</div> 
+                 </div> 
+             </div> 
+         </div> 
+ 
+         <div class="section"> 
+             <h2 class="editable" data-key="reports-title">分析报告卡片</h2> 
+             <div class="report-cards"> 
+                 <div class="report-card"> 
+                     <h3 class="editable" data-key="report-1-title">2022冬季裤子品类企划分析</h3> 
+                     <p class="description editable" data-key="report-1-desc">本报告深入分析了2022年冬季裤子品类的市场趋势、销售数据和消费者偏好，为商品开发，投产提供了数据支持。</p> 
+                     <a href="reports/2022_winter_pants_analysis.pdf" class="download-btn" data-key="report-1-pdf" download>下载PDF</a> 
+                 </div> 
+                 <div class="report-card"> 
+                     <h3 class="editable" data-key="report-2-title">19-21年裤子品类历史资料库</h3> 
+                     <p class="description editable" data-key="report-2-desc">作为品类数据库，提供季度常青款方向。</p> 
+                     <a href="reports/19-21_pants_database.pdf" class="download-btn" data-key="report-2-pdf" download>下载PDF</a> 
+                 </div> 
+                 <div class="report-card"> 
+                     <h3 class="editable" data-key="report-3-title">自动分货系统部分逻辑</h3> 
+                     <p class="description editable" data-key="report-3-desc">本报告是与信息部合作开发自动分货系统的部分逻辑展示，系统目前还在使用，目的是为提供运营效率，可自动将仓库货品按需求派发门店。</p> 
+                     <a href="reports/automatic_distribution_system.pdf" class="download-btn" data-key="report-3-pdf" download>下载PDF</a> 
+                 </div> 
+             </div> 
+             <div class="privacy-note editable" data-key="privacy-note-content"> 
+                 为保证前司的隐私和信息安全性，故用已过时效性的文件展示，所有文件均为机密，仅供授权人员查看。所有报告内容均为机密，请勿外传。 
+             </div> 
+         </div> 
+ 
+         <div class="section skills"> 
+             <h2 class="editable" data-key="skills-title">技能栈</h2> 
+             <span class="skill-tag editable" data-key="skill-1">Excel (高级)</span> 
+             <span class="skill-tag editable" data-key="skill-2">Python + trae (在学)</span> 
+             <span class="skill-tag editable" data-key="skill-3">数据可视化</span> 
+             <span class="skill-tag editable" data-key="skill-4">商品生命周期管理</span> 
+         </div> 
+     </div> 
+ 
+     <div id="admin-controls"> 
+         <button id="login-btn" class="admin-btn" onclick="handleAdminLogin()">管理员登录</button> 
+         <button id="save-btn" class="admin-btn save-btn" onclick="saveChanges()">保存修改</button> 
+     </div> 
+ 
+     <div class="footer"> 
+         <p class="editable" data-key="footer-text">&copy; 2026 Annie He. All Rights Reserved.</p> 
+     </div> 
+ 
+     <script> 
+         let isEditMode = false; 
+         const correctPassword = "annie"; // 管理员密码 
+ 
+         // 页面加载时恢复数据（仅限文字） 
+         window.onload = function() { 
+             const savedData = localStorage.getItem('portfolioData'); 
+             if (savedData) { 
+                 const data = JSON.parse(savedData); 
+                 Object.keys(data).forEach(key => { 
+                     const el = document.querySelector(`[data-key="${key}"]`); 
+                     if (el && el.tagName !== 'A') { 
+                         el.innerText = data[key]; 
+                     } 
+                 }); 
+             } 
+         }; 
+ 
+         function handleAdminLogin() { 
+             if (!isEditMode) { 
+                 const password = prompt("请输入管理密码："); 
+                 if (password === correctPassword) { 
+                     enableEditMode(); 
+                 } else { 
+                     alert("密码错误，无法修改内容。"); 
+                 } 
+             } else { 
+                 disableEditMode(); 
+             } 
+         } 
+ 
+         function enableEditMode() { 
+             isEditMode = true; 
+             document.querySelectorAll('.editable').forEach(el => { 
+                 el.contentEditable = "true"; 
+             }); 
+             document.getElementById('login-btn').innerText = "退出编辑"; 
+             document.getElementById('save-btn').style.display = "inline-block"; 
+             alert("编辑模式已开启！您可以直接点击文字进行修改。\n注意：此处修改仅保存在本地浏览器，如需永久生效请修改源代码。"); 
+         } 
+ 
+         function disableEditMode() { 
+             isEditMode = false; 
+             document.querySelectorAll('.editable').forEach(el => { 
+                 el.contentEditable = "false"; 
+             }); 
+             document.getElementById('login-btn').innerText = "管理员登录"; 
+             document.getElementById('save-btn').style.display = "none"; 
+         } 
+ 
+         function saveChanges() { 
+             const data = {}; 
+             document.querySelectorAll('.editable').forEach(el => { 
+                 const key = el.getAttribute('data-key'); 
+                 if (key) { 
+                     data[key] = el.innerText; 
+                 } 
+             }); 
+             
+             localStorage.setItem('portfolioData', JSON.stringify(data)); 
+             alert("本地预览已保存！\n提示：为了让所有人都能看到，请联系开发人员将修改后的 HTML 部署到服务器。"); 
+             disableEditMode(); 
+         } 
+     </script> 
+ 
+ </body> 
+ </html>
